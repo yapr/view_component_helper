@@ -5,8 +5,8 @@ source "https://rubygems.org"
 # Specify your gem's dependencies in view_component_helper.gemspec
 gemspec
 
-gem "view_component"
 gem "rails"
+gem "view_component"
 
 gem "rake", "~> 13.0"
 
