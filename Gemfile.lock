@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    view_component_helper (0.1.0)
+    view_component_helper (0.2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -186,9 +186,6 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     zeitwerk (2.6.8)
-
-PLATFORMS
-  x86_64-darwin-21
 
 DEPENDENCIES
   rails
