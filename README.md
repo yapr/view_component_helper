@@ -16,7 +16,21 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
-TODO: Write usage instructions here
+##### Please refer to ViewComponent website for more details.
+
+To use ViewComponent, you'll need to follow the example below. By utilizing this gem, you can make calls like the following:
+
+```
+# Before
+<%= render(MessageComponent.new(name: "World")) %>
+
+# After
+<%= render_rc("messageComponent", name: "World") %>
+```
+
+Make sure to incorporate ViewComponent as described in the reference link to enhance your application's functionality.
+
+
 
 ## Development
 
@@ -26,7 +40,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/view_component_helper.
+Bug reports and pull requests are welcome on GitHub at https://github.com/yapr/view_component_helper.
 
 ## License
 
