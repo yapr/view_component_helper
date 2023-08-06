@@ -7,8 +7,8 @@ module ViewComponentHelper
 
   private
 
-  def component_class_for(path)
-    component_name.classify.constantize
+  def component_class_for(name)
+    name.classify.constantize
   end
 end
 
