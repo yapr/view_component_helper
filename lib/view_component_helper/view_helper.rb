@@ -8,10 +8,7 @@ module ViewComponentHelper
   private
 
   def component_class_for(path)
-    class_names = path.to_s.split("/")
-    component_name = class_names.map(&:capitalize).join("::")
-
-    component_name.constantize
+    component_name.classify.constantize
   end
 end
 
