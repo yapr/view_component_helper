@@ -15,4 +15,4 @@ end
 
 ActiveSupport.on_load :action_view do
   include ViewComponentHelper
-end
+end if defined?(ActiveSupport)

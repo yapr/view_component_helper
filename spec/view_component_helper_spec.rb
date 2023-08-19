@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe ViewComponentHelper do
+RSpec.describe ViewComponentHelper, type: :helper do
   it "has a version number" do
     expect(ViewComponentHelper::VERSION).not_to be nil
   end
