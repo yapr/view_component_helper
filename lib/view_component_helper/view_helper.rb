@@ -4,6 +4,7 @@ module ViewComponentHelper
   end
 
   alias render_vc render_view_component
+  alias vc render_view_component
 
   private
 

@@ -25,7 +25,9 @@ To use ViewComponent, you'll need to follow the example below. By utilizing this
 <%= render(MessageComponent.new(name: "World")) %>
 
 # After
-<%= render_rc("messageComponent", name: "World") %>
+<%= render_vc("messageComponent", name: "World") %>
+or
+<%= vc("messageComponent", name: "World") %>
 ```
 
 Make sure to incorporate ViewComponent as described in the reference link to enhance your application's functionality.
