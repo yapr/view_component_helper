@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email = ["take.yapr@gmail.com"]
 
   spec.summary = "This gem enables easy invocation of View helper methods for view_component."
-  spec.description = "The 'view_component_helper' is invocation for view_component. Simplify integration and boost productivity. "
+  spec.description = "Simplify integration and boost productivity. "
   spec.homepage = "https://github.com/yapr/view_component_helper"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
