@@ -23,5 +23,7 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
+    - name: Unset deployment config
+      run: bundle config unset deployment
     - name: Run the default task
       run: bundle exec rake
