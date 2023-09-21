@@ -1,4 +1,6 @@
-require 'rails/railtie'
+# frozen_string_literal: true
+
+require "rails/railtie"
 
 module ViewComponentHelper
   class Railtie < Rails::Railtie

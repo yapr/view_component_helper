@@ -1,6 +1,5 @@
-#
-#
-#
+# frozen_string_literal: true
+
 module ViewComponentHelper
   def render_view_component(path, *args, **kwargs, &block)
     render path.classify.constantize.new(*args, **kwargs, &block)
@@ -10,12 +9,12 @@ module ViewComponentHelper
   alias vc render_view_component
 
   def self.load_components
-    Dir[Rails.root.join('app/components/**/*.rb')].each do |file|
+    Dir[Rails.root.join("app/components/**/*.rb")].sort.each do |file|
       require file
 
-      component_path = file.gsub("#{Rails.root.join('app/components')}/", '').gsub('.rb', '')
+      component_path = file.gsub("#{Rails.root.join("app/components")}/", "").gsub(".rb", "")
       component_class_name = component_path.camelize # don't use classify
-      method_name = component_path.gsub('/', '_')
+      method_name = component_path.gsub("/", "_")
 
       next unless Object.const_defined?(component_class_name) && component_class_name.constantize < ViewComponent::Base
 
@@ -26,6 +25,8 @@ module ViewComponentHelper
   end
 end
 
-ActiveSupport.on_load :action_view do
-  include ViewComponentHelper
-end if defined?(ActiveSupport)
+if defined?(ActiveSupport)
+  ActiveSupport.on_load :action_view do
+    include ViewComponentHelper
+  end
+end
