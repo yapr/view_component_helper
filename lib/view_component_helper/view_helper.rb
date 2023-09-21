@@ -7,8 +7,14 @@
 # and displaying components based on their file paths and additional arguments.
 #
 module ViewComponentHelper
-  def render_view_component(path, *args, **kwargs, &block)
-    render path.classify.constantize.new(*args, **kwargs, &block)
+  def render_view_component(path, *args, collection: nil, **kwargs, &block)
+    component_klass = path.classify.constantize
+
+    if collection
+      render component_klass.with_collection(collection, *args, **kwargs, &block)
+    else
+      render component_klass.new(*args, **kwargs, &block)
+    end
   end
 
   alias render_vc render_view_component
