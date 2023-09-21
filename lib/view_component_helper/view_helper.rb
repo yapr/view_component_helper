@@ -14,18 +14,18 @@ module ViewComponentHelper
   alias render_vc render_view_component
   alias vc render_view_component
 
-  def self.load_components
-    components_files.each do |file|
+  def self.default_component_loader
+    -> { Dir[Rails.root.join("app/components/**/*.rb")] }
+  end
+
+  def self.load_components(component_loader = default_component_loader)
+    component_loader.call.each do |file|
       component_path = extract_component_path(file)
       component_class_name = component_path.camelize
       method_name = component_path.gsub("/", "_")
 
       define_render_method_for(component_class_name, method_name) if valid_component_class?(component_class_name)
     end
-  end
-
-  def self.components_files
-    Dir[Rails.root.join("app/components/**/*.rb")].sort
   end
 
   def self.extract_component_path(file)
@@ -37,8 +37,14 @@ module ViewComponentHelper
   end
 
   def self.define_render_method_for(component_class_name, method_name)
-    define_method(method_name) do |*args, **kwargs, &block|
-      render component_class_name.constantize.new(*args, **kwargs, &block)
+    define_method(method_name) do |*args, collection: nil, **kwargs, &block|
+      component_klass = component_class_name.constantize
+
+      if collection
+        render component_klass.with_collection(collection, *args, **kwargs, &block)
+      else
+        render component_klass.new(*args, **kwargs, &block)
+      end
     end
   end
 end
