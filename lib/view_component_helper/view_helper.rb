@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 
+# ViewComponentHelper Module
+#
+# This module provides utility methods to assist with rendering ViewComponents
+# within a Rails application. It aims to simplify the process of invoking
+# and displaying components based on their file paths and additional arguments.
+#
 module ViewComponentHelper
   def render_view_component(path, *args, **kwargs, &block)
     render path.classify.constantize.new(*args, **kwargs, &block)
