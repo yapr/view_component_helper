@@ -17,8 +17,6 @@ module ViewComponentHelper
       component_class_name = component_path.camelize # don't use classify
       method_name = component_path.gsub('/', '_')
 
-      p "create #{method_name}-----------------------------------------"
-
       next unless Object.const_defined?(component_class_name) && component_class_name.constantize < ViewComponent::Base
 
       define_method(method_name) do |*args, **kwargs, &block|
