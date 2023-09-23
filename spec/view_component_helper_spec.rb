@@ -14,9 +14,10 @@ RSpec.describe ViewComponentHelper, type: :helper do
 
   describe ".load_components" do
     it "defines methods for each component" do
-      p dummy_class.new.methods
       expect(dummy_class.new).to respond_to(:button)
-      # 他のコンポーネントメソッド名もチェックする場合、それらをこちらに追加
+      expect(dummy_class.new).to respond_to(:user_profile_component)
+      expect(dummy_class.new).to respond_to(:dialog_component)
+      expect(dummy_class.new).to respond_to(:title_component)
     end
   end
 end
