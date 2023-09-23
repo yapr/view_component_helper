@@ -7,7 +7,7 @@
 # and displaying components based on their file paths and additional arguments.
 #
 module ViewComponentHelper
-  require 'active_support/core_ext/string/inflections'
+  require "active_support/core_ext/string/inflections"
 
   def render_view_component(path, *args, collection: nil, **kwargs, &block)
     component_klass = path.classify.constantize
@@ -24,7 +24,7 @@ module ViewComponentHelper
 
   def self.load_components(component_loader = default_component_loader)
     component_loader.call.each do |file|
-      component_path = file[/components\/(.*)\.rb$/, 1]
+      component_path = file[%r{components/(.*)\.rb$}, 1]
       p component_path
       component_class_name = component_path.camelize
       method_name = component_path.gsub("/", "_")
@@ -50,8 +50,6 @@ module ViewComponentHelper
       end
     end
   end
-
-  private
 
   def self.default_component_loader
     -> { Dir[Rails.root.join("app/components/**/*.rb")] }
