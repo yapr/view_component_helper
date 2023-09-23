@@ -31,6 +31,7 @@ or
 ```
 
 ## Usage
+For more information on ViewComponents, please refer to the [official documentation](https://viewcomponent.org/).
 
 `ViewComponentHelper` allows for easier referencing of `ViewComponent` classes located under the `app/components` directory by providing you with intuitive shortcut methods.
 
@@ -52,7 +53,16 @@ title_component(title: "test title")
 <%= button %>
 ```
 
-3.
+3. For a component located at `app/components/dialog/component.rb`
+
+```erb
+<%= dialog_component do |c| %>
+  <% c.with_title { "dialog title" } %>
+  <% c.with_body do %>
+    <p>this is dialog body</p>
+  <% end %>
+<% end %>
+```
 
 ## Contributing
 
