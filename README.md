@@ -1,8 +1,8 @@
 # ViewComponentHelper
+[![Gem Version](https://badge.fury.io/rb/view_component_helper.svg)](https://badge.fury.io/rb/view_component_helper)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/view_component_helper`. To experiment with that code, run `bin/console` for an interactive prompt.
+`ViewComponentHelper` is a simple gem designed to enhance the functionality provided by [ViewComponent](https://github.com/ViewComponent/view_component). It offers shortcuts to access generated ViewComponents, making your Rails development experience smoother and more efficient.
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
@@ -30,15 +30,39 @@ or
 <%= vc("messageComponent", name: "World") %>
 ```
 
-Make sure to incorporate ViewComponent as described in the reference link to enhance your application's functionality.
+## Usage
+For more information on ViewComponents, please refer to the [official documentation](https://viewcomponent.org/).
 
+`ViewComponentHelper` allows for easier referencing of `ViewComponent` classes located under the `app/components` directory by providing you with intuitive shortcut methods.
 
+### How it works
+For every `ViewComponent` you define within the `app/components` directory, `ViewComponentHelper` automatically provides a shortcut method to render it.
 
-## Development
+### Examples
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+1. For a component located at `app/components/title_component.rb`:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+You can utilize the following shortcut:
+```ruby
+title_component(title: "test title")
+```
+
+2. For a component located at `app/components/button.rb`:
+
+```erb
+<%= button %>
+```
+
+3. For a component located at `app/components/dialog/component.rb`
+
+```erb
+<%= dialog_component do |c| %>
+  <% c.with_title { "dialog title" } %>
+  <% c.with_body do %>
+    <p>this is dialog body</p>
+  <% end %>
+<% end %>
+```
 
 ## Contributing
 
