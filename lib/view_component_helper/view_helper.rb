@@ -15,7 +15,9 @@ module ViewComponentHelper
     if collection
       render component_klass.with_collection(collection, *args, **kwargs, &block)
     else
-      render component_klass.new(*args, **kwargs, &block)
+      component_instance = component_klass.new(*args, **kwargs)
+      component_instance.instance_exec(&block) if block_given?
+      render(component_instance)
     end
   end
 
@@ -43,7 +45,8 @@ module ViewComponentHelper
       if collection
         render component_klass.with_collection(collection, *args, **kwargs, &block)
       else
-        render component_klass.new(*args, **kwargs, &block)
+        component_instance = component_klass.new(*args, **kwargs, &block)
+        render component_instance
       end
     end
   end

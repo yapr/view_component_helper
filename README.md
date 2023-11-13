@@ -61,6 +61,7 @@ title_component(title: "test title")
   <% c.with_body do %>
     <p>this is dialog body</p>
   <% end %>
+  <div>content</div>
 <% end %>
 ```
 
